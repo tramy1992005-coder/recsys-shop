@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recsys Shop — Trang chủ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/shopee.css">
+</head>
+<body>
+
+  <!-- ═══════════ HEADER ═══════════ -->
+  <header class="header">
+    <div class="header-top">
+      <span id="welcome-text"></span>
+      <a href="#" id="logout-link" class="hidden" onclick="logout();return false;">Đăng xuất</a>
+    </div>
+
+    <div class="header-main">
+      <a href="/" class="logo">🛒 Recsys Shop</a>
+
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="Tìm sản phẩm, thương hiệu, danh mục...">
+        <button id="search-btn">🔍 Tìm kiếm</button>
+      </div>
+
+      <div class="cart-icon-wrap" onclick="toggleCart()" title="Giỏ hàng">
+        <span class="icon">🛒</span>
+        <span class="cart-badge hidden" id="cart-badge">0</span>
+        <span class="label">Giỏ hàng</span>
+      </div>
+
+      <div class="user-menu" id="user-menu"></div>
+    </div>
+  </header>
+
+  <!-- ═══════════ MAIN ═══════════ -->
+  <main class="container">
+
+    <!-- Banner -->
+    <div class="banner">
+      <div>
+        <h2 id="banner-title">Chào mừng đến Recsys Shop!</h2>
+        <p id="banner-subtitle">Hệ thống gợi ý cá nhân hóa cho từng người dùng</p>
+      </div>
+      <div class="icon">📱</div>
+    </div>
+
+    <!-- Categories (phần còn lại tải động từ API) -->
+    <div class="categories-bar" id="categories-bar">
+      <span class="category-chip active" data-cat="">🏠 Tất cả</span>
+    </div>
+
+    <!-- Recommendations (cho user đã login) -->
+    <section id="recommend-section" class="section hidden">
+      <div class="section-header">
+        <h2>💡 Dành cho bạn</h2>
+        <span class="algorithm-badge" id="recommend-algo">Hybrid</span>
+      </div>
+      <div id="recommend-grid" class="product-grid"></div>
+    </section>
+
+    <!-- Popular -->
+    <section class="section">
+      <div class="section-header">
+        <h2>🔥 Sản phẩm phổ biến</h2>
+        <span class="algorithm-badge">Top Sellers</span>
+      </div>
+      <div id="popular-grid" class="product-grid"></div>
+    </section>
+
+    <!-- Search results -->
+    <section id="search-section" class="section hidden">
+      <div class="section-header">
+        <h2 id="search-title">🔍 Kết quả tìm kiếm</h2>
+        <span class="algorithm-badge">Search</span>
+      </div>
+      <div id="search-grid" class="product-grid"></div>
+    </section>
+
+  </main>
+
+  <!-- Loading -->
+  <div id="loading" class="loading hidden">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- ═══════════ CART ═══════════ -->
+  <div id="cart-overlay" class="cart-overlay"></div>
+  <div id="cart-panel" class="cart-panel">
+    <div class="cart-panel-header">
+      <span>🛒 Giỏ hàng của bạn</span>
+      <button class="cart-close" onclick="toggleCart()">×</button>
+    </div>
+    <div class="cart-items" id="cart-items-list"></div>
+    <div id="cart-rec-section" class="cart-rec-section hidden">
+      <div class="cart-rec-title">💡 Có thể bạn cũng thích</div>
+      <div class="cart-rec-scroll" id="cart-rec-list"></div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Tổng cộng:</span>
+        <span class="cart-total-price" id="cart-total-price">$0.00</span>
+      </div>
+      <button class="btn-checkout" onclick="alert('Tính năng thanh toán đang phát triển!')">
+        THANH TOÁN NGAY
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="footer">
+    <p style="font-size:11px;">Dataset: Amazon Reviews 2023 — Cell Phones & Accessories</p>
+  </footer>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/cart.js"></script>
+  <script src="/js/app.js"></script>
+  <script>initHomePage(); initCart();</script>
+</body>
+</html>

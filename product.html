@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi tiết sản phẩm — Recsys Shop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/shopee.css">
+</head>
+<body>
+
+  <!-- ═══════════ HEADER ═══════════ -->
+  <header class="header">
+    <div class="header-top">
+      <span id="welcome-text"></span>
+      <a href="#" id="logout-link" class="hidden" onclick="logout();return false;">Đăng xuất</a>
+    </div>
+
+    <div class="header-main">
+      <a href="/" class="logo">🛒 Recsys Shop</a>
+
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="Tìm sản phẩm...">
+        <button id="search-btn" onclick="goToSearch()">🔍 Tìm kiếm</button>
+      </div>
+
+      <div class="cart-icon-wrap" onclick="toggleCart()" title="Giỏ hàng">
+        <span class="icon">🛒</span>
+        <span class="cart-badge hidden" id="cart-badge">0</span>
+        <span class="label">Giỏ hàng</span>
+      </div>
+
+      <div class="user-menu" id="user-menu"></div>
+    </div>
+  </header>
+
+  <!-- ═══════════ MAIN ═══════════ -->
+  <main class="container">
+
+    <!-- Product detail -->
+    <div class="product-detail" id="product-detail">
+      <!-- Render bởi product.js -->
+    </div>
+
+    <!-- Bought Together -->
+    <section class="section" id="bought-together-section">
+      <div class="section-header">
+        <h2>🎁 Thường mua kèm</h2>
+        <span class="algorithm-badge">Complementary Items</span>
+      </div>
+      <div id="bt-list" class="bt-row"></div>
+      <div id="bt-total" class="bt-total hidden"></div>
+    </section>
+
+    <!-- Store items (same seller) -->
+    <section class="section hidden" id="store-section">
+      <div class="section-header">
+        <h2>🏪 Sản phẩm khác từ cửa hàng này</h2>
+        <span class="algorithm-badge" id="store-algo-badge">Same Store</span>
+      </div>
+      <div id="store-grid" class="product-grid"></div>
+    </section>
+
+    <!-- Personal recommendations (logged-in users) -->
+    <section class="section hidden" id="personal-rec-section">
+      <div class="section-header">
+        <h2>💡 Gợi ý cho bạn</h2>
+        <span class="algorithm-badge" id="personal-algo-badge">Hybrid</span>
+      </div>
+      <div id="personal-rec-grid" class="product-grid"></div>
+    </section>
+
+    <!-- Similar products -->
+    <section class="section">
+      <div class="section-header">
+        <h2>🔍 Sản phẩm tương tự</h2>
+        <span class="algorithm-badge">Content-Based (TF-IDF)</span>
+      </div>
+      <div id="similar-grid" class="product-grid"></div>
+    </section>
+
+  </main>
+
+  <!-- Loading -->
+  <div id="loading" class="loading hidden">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- ═══════════ CART ═══════════ -->
+  <div id="cart-overlay" class="cart-overlay"></div>
+  <div id="cart-panel" class="cart-panel">
+    <div class="cart-panel-header">
+      <span>🛒 Giỏ hàng của bạn</span>
+      <button class="cart-close" onclick="toggleCart()">×</button>
+    </div>
+    <div class="cart-items" id="cart-items-list"></div>
+    <div id="cart-rec-section" class="cart-rec-section hidden">
+      <div class="cart-rec-title">💡 Có thể bạn cũng thích</div>
+      <div class="cart-rec-scroll" id="cart-rec-list"></div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Tổng cộng:</span>
+        <span class="cart-total-price" id="cart-total-price">$0.00</span>
+      </div>
+      <button class="btn-checkout" onclick="alert('Tính năng thanh toán đang phát triển!')">
+        THANH TOÁN NGAY
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="footer">
+    <p>Đồ án Khoa học máy tính — Recommender System</p>
+  </footer>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/cart.js"></script>
+  <script src="/js/product.js"></script>
+  <script>initProductPage(); initCart();</script>
+</body>
+</html>

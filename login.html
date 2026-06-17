@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng nhập — Recsys Shop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body>
+  <div class="auth-wrapper">
+    <div class="auth-box">
+      <div class="auth-header">
+        <a href="/" class="logo">🛒 Recsys<span>Shop</span></a>
+        <h2>Đăng nhập</h2>
+      </div>
+
+      <form id="login-form" class="auth-form">
+        <div class="form-group">
+          <label for="username">Tên đăng nhập</label>
+          <input type="text" id="username" name="username"
+                 placeholder="Nhập tên đăng nhập" required autocomplete="username">
+        </div>
+
+        <div class="form-group">
+          <label for="password">Mật khẩu</label>
+          <div class="input-wrapper">
+            <input type="password" id="password" name="password"
+                   placeholder="Nhập mật khẩu" required autocomplete="current-password">
+            <button type="button" class="toggle-pw" data-target="password" aria-label="Hiện/ẩn mật khẩu">
+              <svg class="eye-on" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              <svg class="eye-off" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div id="error-msg" class="error-msg hidden"></div>
+
+        <button type="submit" class="btn-primary">ĐĂNG NHẬP</button>
+
+        <div class="auth-divider"><span>HOẶC</span></div>
+
+        <p class="auth-footer">
+          Chưa có tài khoản? <a href="/register">Đăng ký ngay</a>
+        </p>
+      </form>
+
+      <div id="demo-section" class="demo-section hidden">
+        <div class="demo-title">🎭 Tài khoản Demo (có lịch sử tương tác)</div>
+        <div id="demo-list" class="demo-list"></div>
+        <div class="demo-note">Mật khẩu: <code>Demo@123</code></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/auth.js"></script>
+  <script>initLogin();</script>
+</body>
+</html>
